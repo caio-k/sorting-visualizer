@@ -29,7 +29,7 @@ angular.module('sortingVisualizerProjectApp')
 
       function generateNewArray() {
         var elementsArray = [];
-        for (let i = 0; i < $scope.numberOfElements; i++) {
+        for (var i = 0; i < $scope.numberOfElements; i++) {
           const randomValue = Math.floor(Math.random() * 100 + 1);
           elementsArray.push({
             id: i+1,
@@ -56,7 +56,7 @@ angular.module('sortingVisualizerProjectApp')
       };
 
       function selectSortAndRun(algorithm) {
-        let array = angular.copy($scope.elements);
+        var array = angular.copy($scope.elements);
         switch (algorithm) {
           case 'mergeSort': return mergeSort.sort(array);
           case 'quickSort': return quickSort.sort(array);
@@ -78,30 +78,29 @@ angular.module('sortingVisualizerProjectApp')
       }
 
       function makeAnimation(animations) {
-        return new Promise((resolve => {
+        return new Promise(function (resolve) {
+          for (var i = 0; i < animations.length; i++) {
 
-          for (let i = 0; i < animations.length; i++) {
-
-            $timeout(function () {
+            $timeout(function (i) { return function() {
               switch (animations[i].action) {
                 case properties.SELECTION_ACTION:
                   if (animations[i].firstElementId) {
-                    let firstElement = findElementById(animations[i].firstElementId);
+                    var firstElement = findElementById(animations[i].firstElementId);
                     firstElement.color = animations[i].color;
                   }
 
                   if (animations[i].secondElementId) {
-                    let secondElement = findElementById(animations[i].secondElementId);
+                    var secondElement = findElementById(animations[i].secondElementId);
                     secondElement.color = animations[i].color;
                   }
 
                   break;
 
                 case properties.SWAP_ACTION:
-                  let firstElementIndexSWAP = findIndexElementById(animations[i].firstElementId);
-                  let secondElementIndexSWAP = findIndexElementById(animations[i].secondElementId);
+                  var firstElementIndexSWAP = findIndexElementById(animations[i].firstElementId);
+                  var secondElementIndexSWAP = findIndexElementById(animations[i].secondElementId);
 
-                  let firstElementSWAPCopy = $scope.elements[firstElementIndexSWAP];
+                  var firstElementSWAPCopy = $scope.elements[firstElementIndexSWAP];
                   $scope.elements[firstElementIndexSWAP] = $scope.elements[secondElementIndexSWAP];
                   $scope.elements[secondElementIndexSWAP] = firstElementSWAPCopy;
 
@@ -111,7 +110,7 @@ angular.module('sortingVisualizerProjectApp')
                   break;
 
                 case properties.OVERRIDE_ACTION:
-                  let removedElement = $scope.elements.splice(animations[i].indexToBeRemoved, 1);
+                  var removedElement = $scope.elements.splice(animations[i].indexToBeRemoved, 1);
                   removedElement[0].color = animations[i].color;
                   $scope.elements.splice(animations[i].indexToBeInserted, 0, removedElement[0]);
 
@@ -124,10 +123,9 @@ angular.module('sortingVisualizerProjectApp')
                 });
                 resolve();
               }
-
-            }, speed * (i+1));
+            };}(i), speed * (i+1));
           }
-        }));
+        });
       }
 
       $scope.runSort = function(algorithm) {
@@ -140,7 +138,7 @@ angular.module('sortingVisualizerProjectApp')
 
           foundAlgorithm.active = true;
 
-          let animations = selectSortAndRun(algorithm);
+          var animations = selectSortAndRun(algorithm);
 
           makeAnimation(animations).then(function () {
             $scope.blockParameters = false;

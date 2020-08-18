@@ -7,9 +7,9 @@ angular.module('sortingVisualizerProjectApp')
 
     function heapify(array, rootIndex, sizeOfHeap, animations) {
 
-      let largest = rootIndex;
-      let left = 2*rootIndex + 1;
-      let right = 2*rootIndex + 2;
+      var largest = rootIndex;
+      var left = 2*rootIndex + 1;
+      var right = 2*rootIndex + 2;
 
       if (left < sizeOfHeap) {
         animations.push(animationFactory.createElementAnimationForSelectionAndSwap(array[largest].id, array[left].id, properties.selectedElementColor, properties.SELECTION_ACTION));
@@ -34,7 +34,7 @@ angular.module('sortingVisualizerProjectApp')
         animations.push(animationFactory.createElementAnimationForSelectionAndSwap(array[largest].id, array[rootIndex].id, properties.selectedElementColor, properties.SWAP_ACTION));
         animations.push(animationFactory.createElementAnimationForSelectionAndSwap(array[largest].id, array[rootIndex].id, properties.defaultColor, properties.SELECTION_ACTION));
 
-        let swap = array[largest];
+        var swap = array[largest];
         array[largest] = array[rootIndex];
         array[rootIndex] = swap;
 
@@ -43,19 +43,19 @@ angular.module('sortingVisualizerProjectApp')
     }
 
     this.sort = function (array) {
-      let animations = [];
-      let sizeOfHeap = array.length;
+      var animations = [];
+      var sizeOfHeap = array.length;
 
       // Build heap
-      for (let i = (sizeOfHeap/2 - 1); i >= 0; i--) {
+      for (var i = (sizeOfHeap/2 - 1); i >= 0; i--) {
         heapify(array, i, sizeOfHeap, animations);
       }
 
-      for (let i = sizeOfHeap-1; i > 0; i--) {
+      for (var i = sizeOfHeap-1; i > 0; i--) {
 
         animations.push(animationFactory.createElementAnimationForSelectionAndSwap(array[0].id, array[i].id, properties.selectedElementColor, properties.SWAP_ACTION));
 
-        let swap = array[0];
+        var swap = array[0];
         array[0] = array[i];
         array[i] = swap;
 

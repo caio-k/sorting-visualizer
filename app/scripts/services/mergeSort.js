@@ -11,10 +11,10 @@ angular.module('sortingVisualizerProjectApp')
 
     function mergeSortConquer(array, left, midpoint, right, animations) {
 
-      let arrayCopy = angular.copy(array);
-      let firstPartIndex = left;
-      let secondPartIndex = midpoint + 1;
-      let responseIndex = left;
+      var arrayCopy = angular.copy(array);
+      var firstPartIndex = left;
+      var secondPartIndex = midpoint + 1;
+      var responseIndex = left;
 
       while (firstPartIndex <= midpoint && secondPartIndex <= right) {
 
@@ -58,7 +58,7 @@ angular.module('sortingVisualizerProjectApp')
 
     function mergeSortDivide(array, left, right, animations) {
       if (left < right) {
-        let midpoint = Math.floor((left + right)/2);
+        var midpoint = Math.floor((left + right)/2);
         mergeSortDivide(array, left, midpoint, animations);
         mergeSortDivide(array, midpoint + 1, right, animations);
         mergeSortConquer(array, left, midpoint, right, animations);
@@ -66,7 +66,7 @@ angular.module('sortingVisualizerProjectApp')
     }
 
     this.sort = function (array) {
-      let animations = [];
+      var animations = [];
       mergeSortDivide(array, 0, array.length-1, animations);
       return animations;
     };

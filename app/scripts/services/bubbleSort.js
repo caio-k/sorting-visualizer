@@ -6,9 +6,9 @@ angular.module('sortingVisualizerProjectApp')
     const properties = animationFactory.elementProperties;
 
     this.sort = function (array) {
-      let animations = [];
-      for (let i = array.length - 1; i >= 0; i--) {
-        for (let j = 0; j < i; j++) {
+      var animations = [];
+      for (var i = array.length - 1; i >= 0; i--) {
+        for (var j = 0; j < i; j++) {
 
           animations.push(animationFactory.createElementAnimationForSelectionAndSwap(array[j].id, array[j+1].id, properties.selectedElementColor, properties.SELECTION_ACTION));
 
