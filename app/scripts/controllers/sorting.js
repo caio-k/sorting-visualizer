@@ -81,6 +81,12 @@ angular.module('sortingVisualizerProjectApp')
         return new Promise(function (resolve) {
           for (var i = 0; i < animations.length; i++) {
 
+            if (i === 0) {
+              $scope.elements.forEach(function (element) {
+                element.color = properties.defaultColor;
+              });
+            }
+
             $timeout(function (i) { return function() {
               switch (animations[i].action) {
                 case properties.SELECTION_ACTION:
