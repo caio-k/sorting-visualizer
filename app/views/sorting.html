@@ -1,0 +1,25 @@
+<div id="menu">
+  <div id="logo">
+    <span>{{logo}}</span>
+    <br>
+    <span id="developer">{{developer}}</span>
+  </div>
+  <div id="generateNewArray" class="topic" ng-class="blockParameters ? 'defaultCursor' : 'pointerCursor'" ng-click="generateNewArray()">{{generateNewArrayButton}}</div>
+  <div id="setModifier" class="topic">
+    {{setModifier}}
+    <input id="modifierSelector" type="range" min="4" max="100" ng-model="numberOfElements" ng-change="changeArraySizeAndSortingSpeed()" ng-disabled="blockParameters">
+  </div>
+  <div>
+    <div class="topic">{{sortByMessage}}</div>
+    <ul>
+      <li ng-repeat="sorting in sortingTypes" ng-class="sorting.active ? 'currentAlgorithm' : 'sortingTypes'" ng-click="runSort(sorting.algorithm)">{{sorting.label}}</li>
+    </ul>
+  </div>
+</div>
+
+<div id="sortingContent">
+  <div id="elementsSpace">
+    <div ng-repeat="element in elements track by $index" style="width: {{element.width}}; height: {{element.height}};
+            background-color: {{element.color}}; float: left; margin-left: {{element.marginLeft}}"></div>
+  </div>
+</div>
