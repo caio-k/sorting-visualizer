@@ -100,7 +100,9 @@ body {
 .element {
   color: white;
   font-weight: bold;
+  text-align: center;
   padding-top: 4px;
   float: left;
-  text-align: center;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
