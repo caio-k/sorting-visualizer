@@ -21,7 +21,7 @@ angular.module('sortingVisualizerProjectApp')
         {label: 'Heap sort', algorithm: 'heapSort', active: false},
         {label: 'Bubble sort', algorithm: 'bubbleSort', active: false},
       ];
-      $scope.sortByMessage = 'Sort by:';
+      $scope.sortByMessage = 'Algorithms:';
       $scope.blockParameters = false;
       $scope.numberOfElements = 50;
       const speed = 100000 / Math.pow($scope.numberOfElements, 2);
