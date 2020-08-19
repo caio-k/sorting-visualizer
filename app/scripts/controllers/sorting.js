@@ -35,8 +35,6 @@ angular.module('sortingVisualizerProjectApp')
             id: i+1,
             value: randomValue,
             height: randomValue*5 + 'px',
-            width: 700/$scope.numberOfElements + 'px',
-            marginLeft: 100/$scope.numberOfElements + 'px',
             color: properties.defaultColor
           });
         }
@@ -56,7 +54,7 @@ angular.module('sortingVisualizerProjectApp')
         $scope.elements = generateNewArray();
       };
 
-      $scope.getFontSizeOfElements = function() {
+      function getFontSizeOfElements() {
         var fontSize;
 
         if ($scope.numberOfElements <= 10) {
@@ -72,6 +70,14 @@ angular.module('sortingVisualizerProjectApp')
         }
 
         return fontSize + 'px';
+      }
+
+      $scope.elementsInfo = function() {
+        return {
+          fontSize: getFontSizeOfElements(),
+          width: 700/$scope.numberOfElements + 'px',
+          marginLeft: 100/$scope.numberOfElements + 'px',
+        };
       };
 
       function selectSortAndRun(algorithm) {

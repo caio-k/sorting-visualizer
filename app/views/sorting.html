@@ -19,8 +19,8 @@
 
 <div id="sortingContent">
   <div id="elementsSpace">
-    <div ng-repeat="element in elements track by $index" class="element" ng-style="{'width': element.width, 'height': element.height,
-            'background-color': element.color, 'margin-left': element.marginLeft, 'font-size': getFontSizeOfElements()}">
+    <div ng-repeat="element in elements track by $index" class="element" ng-style="{'width': elementsInfo().width, 'height': element.height,
+            'background-color': element.color, 'margin-left': elementsInfo().marginLeft, 'font-size': elementsInfo().fontSize}">
       <span>{{element.value}}</span>
     </div>
   </div>
