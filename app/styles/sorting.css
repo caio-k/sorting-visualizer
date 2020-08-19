@@ -6,7 +6,7 @@
 
 body {
   min-width: 1050px;
-  min-height: 520px;
+  min-height: 530px;
   background-color: #E1E5EE;
 }
 
@@ -88,11 +88,19 @@ body {
 /* ===== CONTENT ===== */
 #sortingContent {
   width: calc(100% - 200px);
-  height: 500px;
+  height: 530px;
   float: left;
 }
 
 #elementsSpace {
   width: 800px;
   margin: 0 auto;
+}
+
+.element {
+  color: white;
+  font-weight: bold;
+  padding-top: 4px;
+  float: left;
+  text-align: center;
 }

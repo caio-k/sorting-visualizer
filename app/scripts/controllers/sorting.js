@@ -30,7 +30,7 @@ angular.module('sortingVisualizerProjectApp')
       function generateNewArray() {
         var elementsArray = [];
         for (var i = 0; i < $scope.numberOfElements; i++) {
-          const randomValue = Math.floor(Math.random() * 100 + 1);
+          const randomValue = Math.floor(Math.random() * 100) + 5;
           elementsArray.push({
             id: i+1,
             value: randomValue,
@@ -54,6 +54,24 @@ angular.module('sortingVisualizerProjectApp')
 
       $scope.changeArraySizeAndSortingSpeed = function () {
         $scope.elements = generateNewArray();
+      };
+
+      $scope.getFontSizeOfElements = function() {
+        var fontSize;
+
+        if ($scope.numberOfElements <= 10) {
+          fontSize = 20;
+        } else if ($scope.numberOfElements <= 20) {
+          fontSize = 15;
+        } else if ($scope.numberOfElements <= 30) {
+          fontSize = 13;
+        } else if ($scope.numberOfElements <= 35){
+          fontSize = 10;
+        } else {
+          fontSize = 0;
+        }
+
+        return fontSize + 'px';
       };
 
       function selectSortAndRun(algorithm) {
