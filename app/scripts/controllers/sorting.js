@@ -24,7 +24,7 @@ angular.module('sortingVisualizerProjectApp')
       $scope.sortByMessage = 'Algorithms:';
       $scope.blockParameters = false;
       $scope.numberOfElements = 50;
-      const speed = 100000 / Math.pow($scope.numberOfElements, 2);
+      var interval = 2000/$scope.numberOfElements;
       const properties = animationFactory.elementProperties;
 
       function generateNewArray() {
@@ -40,6 +40,7 @@ angular.module('sortingVisualizerProjectApp')
             color: properties.defaultColor
           });
         }
+        interval = 2000/$scope.numberOfElements;
         return elementsArray;
       }
 
@@ -129,7 +130,7 @@ angular.module('sortingVisualizerProjectApp')
                 });
                 resolve();
               }
-            };}(i), speed * (i+1));
+            };}(i), interval * (i+1));
           }
         });
       }
