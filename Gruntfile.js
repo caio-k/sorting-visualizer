@@ -429,7 +429,7 @@ module.exports = function (grunt) {
       },
       pages: {
         options: {
-          remote: 'git@github.com:caio-k/sorting-visualizer-project.git',
+          remote: 'git@github.com:caio-k/sorting-visualizer.git',
           branch: 'gh-pages'
         }
       },
